@@ -14,7 +14,7 @@ router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });
 
-module.exports = router;
+
 
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
   const user = await User.findOne({

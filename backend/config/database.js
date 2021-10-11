@@ -1,4 +1,5 @@
 const config = require('./index');
+console.log(config)
 
 const db = config.db;
 const username = db.username;

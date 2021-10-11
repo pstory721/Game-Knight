@@ -23,12 +23,19 @@ function Navigation({ isLoaded }){
   }
 
   return (
+<div>
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">GameKnight</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    <form>
+      <input placeholder="Search"></input>
+      <button>Search</button>
+      {isLoaded}
+      </form>
+</div>
   );
 }
 

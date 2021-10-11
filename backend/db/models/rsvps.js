@@ -2,11 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const rsvp = sequelize.define('rsvp', {
     eventId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       refrences: {model:"events"}
     },
     userId: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       refrences: {model:"users"}
     },
   }, {});
@@ -14,5 +14,5 @@ module.exports = (sequelize, DataTypes) => {
     rsvp.belongsTo(models.User, { foreignKey: "userId" });
 
   };
-  return rsvps;
+  return rsvp;
 };

@@ -6,6 +6,8 @@ module.exports = {
       return queryInterface.bulkInsert('groups', [
       {
         type:"Warhammer40KGame",
+        description:"40k, 2k points with the boiz",
+        file:null,
         createdAt: new Date(),
           updatedAt: new Date(),
       }

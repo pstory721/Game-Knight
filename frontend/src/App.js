@@ -4,6 +4,11 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import { SplashPage } from "./components/splashpage/splash";
+import { Home } from "./components/HomePage/home";
+import { Organize } from "./components/OrganizingGroup/Organize";
+import { GroupPage } from "./components/Group-Page/Group-Page";
+import { Search } from "./components/search/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,8 +22,23 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+           <Route exact path="/">
+            < SplashPage />
+          </Route>
+          <Route path="/home">
+            < Home />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/create-group">
+            <Organize />
+          </Route>
+          <Route path="/group-name">
+            <GroupPage />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
         </Switch>
       )}
