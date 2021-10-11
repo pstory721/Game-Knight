@@ -11,12 +11,14 @@ const groups = await group.findAll()
   }));
 
 
-router.post('/', asyncHandler(async function (_req, res) {
+router.post('/', asyncHandler(async function (req, res) {
   const {type,description,file} = req.body
-  const newGroup = await group.create(
+  console.log(req.body)
+  const newGroup = await group.create({
     type,
     description,
     file
+  }
     )
     return res.json({newGroup});
 }))

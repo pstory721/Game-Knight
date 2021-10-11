@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type:DataTypes.STRING
     },
+    description: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
     file: {
       type: DataTypes.BLOB('long')
     },
