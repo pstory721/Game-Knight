@@ -1,33 +1,45 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import FileUploader from "./FileUploader"
+import { useDispatch, useSelector } from 'react-redux';
+import { PostGroup } from "../../store/create-Group";
+
+
+
+
+
+
 export function Organize() {
-  const [name, setName] = useState("");
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+
+  const [type, setType] = useState("");
   const [description, setDescription] = useState("");
   const[ errors, setErrors]=useState([]);
   let history = useHistory();
 
   useEffect(() => {
     const errors = [];
-    if (name === "") {
+    if (type === "") {
       errors.push("Name field is required");
     }
-    if (name.length > 60) {
+    if (type.length > 60) {
       errors.push("Name field must be 60 characters or less");
     }
     if (description.length > 140) {
       errors.push("Description must be less than 140 characters");
     }
     setErrors(errors);
-  }, []);
+  }, [type,description]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newGroup = {
-      name,
+    const payload = {
+      type,
       description,
       // file
     };
+    let createdGroup = await dispatch(PostGroup(payload))
     history.push("/");
   };
 
@@ -49,9 +61,9 @@ export function Organize() {
           Name
           <input
             type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
           />
         </label>
         <label>
@@ -59,7 +71,7 @@ export function Organize() {
           <textarea
             name="description"
             value={description}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </label>
         {/* <FileUploader

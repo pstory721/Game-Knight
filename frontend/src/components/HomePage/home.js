@@ -37,13 +37,14 @@ export function Home() {
           <div>
             <h4>Join a group</h4>
             <p>Find people who like the same games as you</p>
-            <a>Join Groups</a>
+            <h3> Here are some popular groups you may like!</h3>
+            {homeGroups?.map(group => <span>{group.type}</span>)}
           </div>
         </main>
         <div>
           <h2>Attend a game starting soon</h2>
           <div>
-            {homeEvents.map(event => <span>{event.name}</span>)}
+            {homeEvents?.map(event => <span>{event.name}</span>)}
           </div>
         </div>
       </div>

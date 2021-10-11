@@ -6,11 +6,12 @@ const { User } = require('../../db/models');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const homeRouter = require('./home-page')
+const createGroupRouter = require('./Organize')
 
 router.use('/session', sessionRouter);
 router.use('/home',homeRouter)
 router.use('/users', usersRouter);
-
+router.use('/create-group',createGroupRouter)
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });

@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import CreateGroupReducer from './create-Group';
 import HomeReducer from './home';
 import sessionReducer from './session';
 
@@ -7,7 +8,8 @@ import sessionReducer from './session';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    Home: HomeReducer
+    Home: HomeReducer,
+    CreateGroup: CreateGroupReducer
   });
 
 let enhancer;

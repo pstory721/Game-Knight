@@ -1,4 +1,17 @@
+import React, { useState,useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+
+
+
+
+
 export function GroupPage() {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const homeGroups = useSelector((state) => state.Home.groups);
+  const homeEvents = useSelector((state) => state.Home.events);
   return (
     <main>
       <div>
