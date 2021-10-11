@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
   event.associate = function(models) {
     event.belongsTo(models.User, {foreignKey:"hostId" })
     event.belongsTo(models.Venue, {foreignKey:"venueId" })
-    event.belongsTo(models.group, {foreignKey:"groupId" })
+    event.belongsTo(models.group, {foreignKey:"catagoryId" })
     event.hasMany(models.rsvp, { foreignKey: "eventId" });
   };
   return event;
