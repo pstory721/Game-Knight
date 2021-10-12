@@ -4,14 +4,14 @@ const { group, event } = require("../../db/models");
 const router = express.Router();
 
 router.get(
-  "/",
+  "/:id",
   asyncHandler(async function (req, res) {
     const events = await event.findAll({
-      include: catagoryId,
+      where: {catagoryId:req.params.id},
     });
-    const groups = await group.findByPk(id);
-
-    return res.json({ events, groups });
+    const group1 = await group.findByPk(req.params.id);
+    console.log(events,group1, "***************")
+    return res.json({ events, group1 });
   })
 );
 module.exports = router;

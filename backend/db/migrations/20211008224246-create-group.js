@@ -17,7 +17,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       file: {
-        type: Sequelize.BLOB('long')
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -1,28 +1,29 @@
-const GROUP_FILL = 'session/ShowStuff';
+const GROUP_FILL = 'session/ShowGroup';
 
-const ShowGroup = (group) => {
+const ShowGroup = (group1,events) => {
     return {
       type: GROUP_FILL,
-       group
+       group1,
+       events
     };
   };
 
 
-export const GetGroup = () => async (dispatch) => {
-  const response = await fetch(`/api/group-page`);
-
+export const GetGroup = (id) => async (dispatch) => {
+  const response = await fetch(`/api/group-page/${id}`);
+  console.log(id)
   if (response.ok) {
-    const group = await response.json();
-    dispatch(ShowGroup(group));
+    const {group1, events} = await response.json();
+    dispatch(ShowGroup(group1,events));
   }
-};const initialState = { group: null,events:null };
+};const initialState = { group1: null,events:null };
 const SingleGroupReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
       case GROUP_FILL:
         newState = Object.assign({}, state);
-        newState.group = action.payload.group
-        newState.events = action.payload.events
+        newState.group1 = action.group1
+        newState.events = action.events
         return newState
         default:
         return state;

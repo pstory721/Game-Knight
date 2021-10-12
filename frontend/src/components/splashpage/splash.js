@@ -17,9 +17,9 @@ return (
             <img></img>
         </div>
         <div id='imgDiv'>
-            <img src='/public/img/MAGDNDLogo_Dice_600x600.jpg' alt="DnD logo"/>
-            <img src='/public/img/40k-Logo.webp' alt="40k logo"></img>
-            <img src='/public/img/games_rdibanner.jpg' alt="red dragon inn"></img>
+            <img src={process.env.PUBLIC_URL +'/img/MAGDNDLogo_Dice_600x600.jpg'} alt="DnD logo"/>
+            <img src={process.env.PUBLIC_URL +'/img/40k-Logo.webp'} alt="40k logo"></img>
+            <img src={process.env.PUBLIC_URL +'/img/games_rdibanner.jpg'} alt="red dragon inn"></img>
         </div>
         <div id='linkDiv'>
             <a></a>

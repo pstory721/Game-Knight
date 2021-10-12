@@ -34,7 +34,7 @@ function App() {
           <Route path="/create-group">
             <Organize />
           </Route>
-          <Route path="/group-name">
+          <Route path="/group-page/:id">
             <GroupPage />
           </Route>
           <Route path="/search">

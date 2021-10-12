@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     file: {
-      type: DataTypes.BLOB('long')
+      type: DataTypes.STRING
     },
   }, {});
   // Image.create({
