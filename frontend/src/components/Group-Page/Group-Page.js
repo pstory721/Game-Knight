@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+import SingleGroupReducer from '../../store/group-page';
 
 
 
@@ -10,8 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 export function GroupPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const homeGroups = useSelector((state) => state.Home.groups);
-  const homeEvents = useSelector((state) => state.Home.events);
+  const Group = useSelector((state) => state. SingleGroup.group);
+  const groupEvents = useSelector((state) => state. SingleGroup.events);
+  useEffect(() => {
+    dispatch((SingleGroupReducer()));
+  }, [dispatch]);
   return (
     <main>
       <div>
