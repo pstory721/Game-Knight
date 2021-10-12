@@ -1,11 +1,11 @@
 import { DeleteAGroup, PatchAGroup } from '../../store/group-page';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { PostGroup } from "../../store/create-Group";
 import { useState, useEffect } from "react";
 
 export function EditDelete ({id}) {
     const sessionUser = useSelector((state) => state.session.user);
+    const EditGroups = useSelector((state) => state.SingleGroup.group1);
     const [type, setType] = useState("");
     const [description, setDescription] = useState("");
     const[ errors, setErrors]=useState([]);
@@ -32,21 +32,15 @@ export function EditDelete ({id}) {
           description,
           // file
         };
-        let updatedGroup = await dispatch(PatchAGroup(payload))
-       
+        let updatedGroup = await dispatch(PatchAGroup(payload,EditGroups.id))
+
       };
 
     return(
     <div>
         <button>Edit Group</button>
             <div>
-            <h2>become an organizer</h2>
-            <h1>
-                we will walk you through the creation of your group, just fill out the
-                form below, its that simple!
-            </h1>
             <form onSubmit={handleSubmit}>
-                <h2>Create your Group</h2>
                 <ul className="errors">
                 {errors.map((error) => (
                     <li key={error}>{error}</li>

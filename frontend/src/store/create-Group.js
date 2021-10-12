@@ -34,6 +34,7 @@ const CreateGroupReducer = (state = initialState, action) => {
         groupList.push(action.groups);
         newState.groups = sortList(groupList);
         return newState;
+        
         default:
         return state;
     }

@@ -40,7 +40,7 @@ export const DeleteAGroup = (id) => async (dispatch) => {
 }
 
 export const PatchAGroup = (input,id) => async dispatch => {
-  const response = await fetch(`/api/pokemon/${id}`,{
+  const response = await csrfFetch(`/api/group-page/${id}`,{
   method: "PUT",
   body: JSON.stringify( input ),
   headers: { "Content-Type": "application/json" },
@@ -63,6 +63,8 @@ const SingleGroupReducer = (state = initialState, action) => {
         return newState
         case DELETE_GROUP:
           delete newState[action.group1]
+          case UPDATE_GROUP:
+
         default:
         return state;
     }
