@@ -8,6 +8,7 @@ module.exports = {
         type:"Warhammer40KGame",
         description:"40k, 2k points with the boiz",
         file:null,
+        ownerId:4,
         createdAt: new Date(),
           updatedAt: new Date(),
       }

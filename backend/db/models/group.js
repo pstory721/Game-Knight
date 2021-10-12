@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     file: {
       type: DataTypes.STRING
     },
+    ownerId: {
+      type: DataTypes.STRING
+    },
   }, {});
   // Image.create({
   //   data: imageData

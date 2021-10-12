@@ -1,4 +1,5 @@
 const GROUP_FILL = 'session/ShowGroup';
+const DELETE_GROUP = 'session/ShowGroup'
 
 const ShowGroup = (group1,events) => {
     return {
@@ -7,16 +8,29 @@ const ShowGroup = (group1,events) => {
        events
     };
   };
+  const DeleteGroup = (group1) => {
+    return {
+      type: DELETE_GROUP,
+        group1
+    };
+  };
 
 
 export const GetGroup = (id) => async (dispatch) => {
   const response = await fetch(`/api/group-page/${id}`);
-  console.log(id)
   if (response.ok) {
     const {group1, events} = await response.json();
     dispatch(ShowGroup(group1,events));
   }
-};const initialState = { group1: null,events:null };
+};
+export const DeleteAGroup = (id) => async (dispatch) => {
+  const response = await fetch(`/api/group-page/${id}`);
+  if (response.ok) {
+    const group1 = await response.json();
+    dispatch(DeleteGroup(group1));
+  }
+}
+const initialState = { group1: [],events:[] };
 const SingleGroupReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
@@ -25,6 +39,8 @@ const SingleGroupReducer = (state = initialState, action) => {
         newState.group1 = action.group1
         newState.events = action.events
         return newState
+        case DELETE_GROUP:
+          delete newState[action.group1]
         default:
         return state;
     }

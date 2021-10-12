@@ -46,7 +46,7 @@ export function Home() {
           <h2>Attend a game starting soon</h2>
           <div>
             {homeEvents?.map(event => <div>
-              <Link to={`event-${event.id}`}key={`${event.id}`}>{event.name}</Link>
+              <Link to={`event-page/${event.id}`}key={`${event.id}`}>{event.name}</Link>
               </div>)}
           </div>
         </div>

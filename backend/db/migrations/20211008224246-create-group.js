@@ -19,6 +19,10 @@ module.exports = {
       file: {
         type: Sequelize.STRING
       },
+      ownerId: {
+        type: Sequelize.STRING,
+        refrences: {model:"users"}
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
