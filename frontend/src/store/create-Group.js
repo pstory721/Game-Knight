@@ -1,24 +1,25 @@
+import { csrfFetch } from './csrf';
 const CREATE_GROUP = 'session/createGroup';
 
 const CreateGroup = (groups) => {
     return {
       type: CREATE_GROUP,
-       payload:groups
+       groups
     };
   };
 
 
 export const PostGroup = (input) => async (dispatch) => {
-  const response = await fetch(`/api/create-group`,{
+  const response = await csrfFetch(`/api/create-group`,{
   method: "POST",
   body: JSON.stringify( input ),
-  headers: { "Content-Type": "application/json" },
   })
   if (response.ok) {
     const groups = await response.json();
     dispatch(CreateGroup(groups));
   }
-};const initialState = { groups: null}
+};
+const initialState = { groups: []}
 
 const sortList = (list) => {
     return list.sort((groupA, groupB) => {
@@ -26,7 +27,7 @@ const sortList = (list) => {
     }).map((group) => group.type);
   };
 const CreateGroupReducer = (state = initialState, action) => {
-    let newState;
+    let newState = {...state};
     switch (action.type) {
       case CREATE_GROUP:
         const groupList = newState.groups.map(group => newState[group]);

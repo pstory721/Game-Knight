@@ -1,8 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { GetStuff } from '../../store/home';
 import { useDispatch, useSelector } from 'react-redux';
-
-
+import { Link } from 'react-router-dom';
 
 
 export function Home() {
@@ -38,13 +37,17 @@ export function Home() {
             <h4>Join a group</h4>
             <p>Find people who like the same games as you</p>
             <h3> Here are some popular groups you may like!</h3>
-            {homeGroups?.map(group => <span>{group.type}</span>)}
+            {homeGroups?.map(group => <div>
+              <Link to ={`/group-${group.id}`}>{group.type}</Link>
+            </div>)}
           </div>
         </main>
         <div>
           <h2>Attend a game starting soon</h2>
           <div>
-            {homeEvents?.map(event => <span>{event.name}</span>)}
+            {homeEvents?.map(event => <div>
+              <Link to={`event-${event.id}`}>{event.name}</Link>
+              </div>)}
           </div>
         </div>
       </div>

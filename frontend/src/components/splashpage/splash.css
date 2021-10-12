@@ -1,0 +1,38 @@
+
+
+.header{
+    color: black;
+
+}
+
+#openingDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#imgDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#linkDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#howDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#spacerDiv{
+    display: flex;
+    height: 50%;
+    width: 50%;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
