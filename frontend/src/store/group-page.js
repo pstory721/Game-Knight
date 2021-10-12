@@ -1,5 +1,7 @@
+import { csrfFetch } from './csrf';
 const GROUP_FILL = 'session/ShowGroup';
 const DELETE_GROUP = 'session/ShowGroup'
+const UPDATE_GROUP = 'session/ShowGroup';
 
 const ShowGroup = (group1,events) => {
     return {
@@ -8,10 +10,15 @@ const ShowGroup = (group1,events) => {
        events
     };
   };
-  const DeleteGroup = (group1) => {
+  const DeleteGroup = () => {
     return {
       type: DELETE_GROUP,
-        group1
+    };
+  };
+  const UpdateGroup = (group1) => {
+    return {
+      type:UPDATE_GROUP,
+      group1
     };
   };
 
@@ -24,12 +31,27 @@ export const GetGroup = (id) => async (dispatch) => {
   }
 };
 export const DeleteAGroup = (id) => async (dispatch) => {
-  const response = await fetch(`/api/group-page/${id}`);
+  const response = await csrfFetch(`/api/group-page/${id}`,{
+    method:"DELETE"
+  });
   if (response.ok) {
-    const group1 = await response.json();
-    dispatch(DeleteGroup(group1));
+    dispatch(DeleteGroup());
   }
 }
+
+export const PatchAGroup = (input,id) => async dispatch => {
+  const response = await fetch(`/api/pokemon/${id}`,{
+  method: "PUT",
+  body: JSON.stringify( input ),
+  headers: { "Content-Type": "application/json" },
+  })
+  if (response.ok) {
+    const editedGroup = await response.json();
+    dispatch(UpdateGroup(editedGroup));
+    return true
+  }
+};
+
 const initialState = { group1: [],events:[] };
 const SingleGroupReducer = (state = initialState, action) => {
     let newState;

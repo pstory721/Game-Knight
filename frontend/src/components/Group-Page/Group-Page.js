@@ -22,7 +22,7 @@ export function GroupPage() {
   let userCheck;
   if(sessionUser){
     userCheck = (
-      <EditDelete />
+      <EditDelete id={group?.id}/>
     )
   }
 
