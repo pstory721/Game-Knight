@@ -12,6 +12,25 @@ export function EditDelete () {
     const[ errors, setErrors]=useState([]);
     const dispatch = useDispatch();
     const history = useHistory()
+    const [showForm, setShowForm] = useState(false);
+
+    const openForm = () => {
+      if (showForm) return;
+      setShowForm(true);
+    };
+
+    useEffect(() => {
+      if (!showForm) return;
+
+      const closeForm = () => {
+        setShowForm(false);
+      };
+
+      document.addEventListener('click', closeForm);
+
+      return () => document.removeEventListener("click", closeForm);
+    }, [showForm]);
+
     useEffect(() => {
         const errors = [];
         if (type === "") {
@@ -39,7 +58,8 @@ export function EditDelete () {
 
     return(
     <div>
-        <button>Edit Group</button>
+        <button onClick={openForm}>Edit Group</button>
+            {showForm &&(
             <div>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
@@ -70,10 +90,11 @@ export function EditDelete () {
                 /> */}
 
                 <button type="submit" disabled={errors.length > 0}>
-                Create your group!
+                Update your Group
                 </button>
             </form>
             </div>
+            )}
  <button
         onClick={ () => {
             dispatch(DeleteAGroup(id))

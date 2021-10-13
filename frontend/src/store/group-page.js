@@ -46,8 +46,8 @@ export const PatchAGroup = (input,id) => async dispatch => {
   headers: { "Content-Type": "application/json" },
   })
   if (response.ok) {
-    const editedGroup = await response.json();
-    dispatch(UpdateGroup(editedGroup));
+    const { UpdatedGroup } = await response.json();
+dispatch(UpdateGroup(UpdatedGroup));
   }
 };
 
