@@ -16,14 +16,20 @@ router.get(
 
 router.delete("/:id", asyncHandler(async function (req, res) {
   const DeleteGroup = await group.findByPk(req.params.id)
-  console.log(req.params.id)
   await DeleteGroup.destroy()
   return res.json();
 }));
 router.put("/:id", asyncHandler(async function (req, res) {
   const UpdatedGroup = await group.findByPk(req.params.id)
-  console.log(req.params.id)
-  await UpdatedGroup.update(res.body)
-  return res.json();
+  const id = req.body.id
+  delete req.body.id
+  await UpdatedGroup.update(
+    req.body,
+    {where:{id},
+    returning: true,
+    plain: true
+  }
+  )
+  return res.json({UpdatedGroup});
 }));
 module.exports = router;

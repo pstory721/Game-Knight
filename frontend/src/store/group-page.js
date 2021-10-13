@@ -48,7 +48,6 @@ export const PatchAGroup = (input,id) => async dispatch => {
   if (response.ok) {
     const editedGroup = await response.json();
     dispatch(UpdateGroup(editedGroup));
-    return true
   }
 };
 
@@ -63,8 +62,10 @@ const SingleGroupReducer = (state = initialState, action) => {
         return newState
         case DELETE_GROUP:
           delete newState[action.group1]
+          return newState
           case UPDATE_GROUP:
-
+            newState.group1 = action.group1
+            return newState
         default:
         return state;
     }

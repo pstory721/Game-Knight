@@ -1,9 +1,10 @@
 import { DeleteAGroup, PatchAGroup } from '../../store/group-page';
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 
-export function EditDelete ({id}) {
+export function EditDelete () {
+    const { id } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
     const EditGroups = useSelector((state) => state.SingleGroup.group1);
     const [type, setType] = useState("");
@@ -32,7 +33,7 @@ export function EditDelete ({id}) {
           description,
           // file
         };
-        let updatedGroup = await dispatch(PatchAGroup(payload,EditGroups.id))
+        let updatedGroup = await dispatch(PatchAGroup(payload,id))
 
       };
 
