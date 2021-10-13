@@ -18,7 +18,7 @@ export function EditDelete () {
       if (showForm) return;
       setShowForm(true);
     };
-
+    function useOutsideAlerter(ref) {
     useEffect(() => {
       if (!showForm) return;
 
@@ -26,11 +26,16 @@ export function EditDelete () {
         setShowForm(false);
       };
 
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+        }
+    }
+
       document.addEventListener('click', closeForm);
 
       return () => document.removeEventListener("click", closeForm);
     }, [showForm]);
-
+  }
     useEffect(() => {
         const errors = [];
         if (type === "") {

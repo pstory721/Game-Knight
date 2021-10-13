@@ -42,6 +42,18 @@ export function Home() {
               </div>)}
           </div>
         </div>
+        <div>
+                <Link to='/create-group' >Start a Group</Link>
+                    <p>Make "friends"</p>
+               </div>
+               <div>
+                <Link to='/create-event' >Add an event to existing groups</Link>
+                    <p>Make "friends"</p>
+                </div>
+                <div>
+                <Link to='/create-venue' >How do we know where the funs at without a venue? Create one here</Link>
+                    <p>Make "friends"</p>
+                </div>
       </div>
     </div>
   );

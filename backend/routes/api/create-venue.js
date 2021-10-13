@@ -1,25 +1,28 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');;
 const { User } = require('../../db/models');
-const { event,group } = require('../../db/models');
+const { venue } = require('../../db/models');
 const router = express.Router();
 
 router.get('/', asyncHandler(async function (_req, res) {
-const events = await event.findAll()
-const groups = await group.findAll()
-    return res.json({events,groups});
+const venues = await venue.findAll()
+    return res.json({venue});
   }));
 
 
 router.post('/', asyncHandler(async function (req, res) {
-  const {type,description,file} = req.body
-  const newGroup = await group.create({
-    type,
-    description,
-    file
+  const {name,address,city,state,zipCode,lat,lng} = req.body
+  const newVenue = await venue.create({
+    name,
+    address,
+    city,
+    state,
+    zipCode,
+    lat,
+    lng
   }
     )
-    return res.json({newGroup});
+    return res.json({newVenue});
 }))
 
 

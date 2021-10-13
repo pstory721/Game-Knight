@@ -9,6 +9,7 @@ import { Home } from "./components/HomePage/home";
 import { Organize } from "./components/OrganizingGroup/Organize";
 import { GroupPage } from "./components/Group-Page/Group-Page";
 import { Search } from "./components/search/Search";
+import { CreateVenue } from "./components/create-venue/create-venue";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,12 @@ function App() {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/create-event">
+            < l/>
+          </Route>
+          <Route path="/create-venue">
+            <CreateVenue />
           </Route>
         </Switch>
       )}

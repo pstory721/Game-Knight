@@ -8,12 +8,13 @@ const usersRouter = require('./users.js');
 const homeRouter = require('./home-page')
 const createGroupRouter = require('./Organize')
 const groupPageRouter = require('./group-page')
-
+const venueCreateRouter = require('./create-venue')
 router.use('/session', sessionRouter);
 router.use('/home',homeRouter)
 router.use('/users', usersRouter);
 router.use('/create-group',createGroupRouter)
 router.use('/group-page',groupPageRouter)
+router.use('/create-venue',venueCreateRouter)
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });
