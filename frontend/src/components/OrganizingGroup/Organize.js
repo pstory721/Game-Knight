@@ -40,17 +40,17 @@ export function Organize() {
       // file
     };
     let createdGroup = await dispatch(PostGroup(payload))
-    history.push("/");
+    history.push("/home");
   };
 
   return (
-    <div>
+    <div className='secondDiv'>
       <h2>become an organizer</h2>
       <h1>
         we will walk you through the creation of your group, just fill out the
         form below, its that simple!
       </h1>
-      <form onSubmit={handleSubmit}>
+      <form className='secondDiv' onSubmit={handleSubmit}>
         <h2>Create your Group</h2>
         <ul className="errors">
           {errors.map((error) => (

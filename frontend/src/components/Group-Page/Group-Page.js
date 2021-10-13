@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetGroup } from '../../store/group-page';
 import { useParams,Link } from 'react-router-dom';
 import { EditDelete } from './Edit-Delete';
-
-
+import './group-page.css'
 
 
 
@@ -31,20 +30,19 @@ export function GroupPage() {
 
   return (
     <main>
-      <div>
+      <div className='secondDiv'>
         <div>
           <img src={`${group?.file}`} alt='Group Image Here'></img>
         </div>
 
         <div>
-          <p> {`${group?.type}`} </p>
-          <div>
+          <div className='secondDiv'>
             <div>{`${group?.type}`}</div>
             <div>{`${group?.description}`}</div>
           </div>
           {userCheck}
         </div>
-        <div>
+        <div className='secondDiv'>
           <ul>
           {groupEvents?.map(event => <div>
               <Link to={`event-page/${event.id}`}key={`${event.id}`}>{event.name}</Link>

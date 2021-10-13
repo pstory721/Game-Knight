@@ -23,7 +23,7 @@ function Navigation({ isLoaded }){
   }
 
   return (
-<div>
+<div id ='navbar'>
     <ul>
       <li>
         <NavLink exact to="/">GameKnight</NavLink>

@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { GetStuff } from '../../store/home';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import './home.css';
 
 export function Home() {
   const dispatch = useDispatch();
@@ -14,26 +14,18 @@ export function Home() {
   }, [dispatch,homeGroups]);
 
   return (
-    <div>
+    <div id='openingDiv'>
       <div>
-        <div>
-          <h2>meetup</h2>
-          <input type="text"></input>
-          <input type="text"></input>
-          <button>search</button>
-          <button>Profile</button>
-        </div>
-
-        <header>
+        <header className='secondDiv'>
           <h3>Welcome to GameKnight,{sessionUser.username}</h3>
         </header>
         <main>
-          <div>
+          <div className='secondDiv'>
             <h4>Find a game</h4>
             <p>Games are always happening find one ya like</p>
             <a>Discover Games</a>
           </div>
-          <div>
+          <div className='secondDiv'>
             <h4>Join a group</h4>
             <p>Find people who like the same games as you</p>
             <h3> Here are some popular groups you may like!</h3>
@@ -42,7 +34,7 @@ export function Home() {
             </div>)}
           </div>
         </main>
-        <div>
+        <div className='secondDiv'>
           <h2>Attend a game starting soon</h2>
           <div>
             {homeEvents?.map(event => <div>

@@ -57,10 +57,10 @@ export function EditDelete () {
       };
 
     return(
-    <div>
-        <button onClick={openForm}>Edit Group</button>
+    <div >
+        <button id='splashlinkbuttons'onClick={openForm}>Edit Group</button>
             {showForm &&(
-            <div>
+            <div id='spacerDiv'>
             <form onSubmit={handleSubmit}>
                 <ul className="errors">
                 {errors.map((error) => (
@@ -95,7 +95,7 @@ export function EditDelete () {
             </form>
             </div>
             )}
- <button
+ <button id='splashlinkbuttons'
         onClick={ () => {
             dispatch(DeleteAGroup(id))
             history.push('/home')
