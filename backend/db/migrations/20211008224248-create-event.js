@@ -16,7 +16,7 @@ module.exports = {
       venueId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        refrences: {model:"venues"}
+        refrences: {model:"Venues"}
       },
       catagoryId: {
         allowNull: false,

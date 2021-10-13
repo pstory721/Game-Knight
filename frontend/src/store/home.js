@@ -23,7 +23,7 @@ const HomeReducer = (state = initialState, action) => {
         newState = Object.assign({}, state);
         newState.groups = action.payload.groups
         newState.events = action.payload.events
-        newState.events = action.payload.venues
+        newState.venues = action.payload.venues
         return newState
         default:
         return state;

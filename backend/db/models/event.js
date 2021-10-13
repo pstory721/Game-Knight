@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     venueId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      refrences: {model:"venues"}
+      refrences: {model:"Venues"}
     },
     catagoryId: {
       allowNull: false,
