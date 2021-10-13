@@ -11,7 +11,7 @@ export function Home() {
   const homeEvents = useSelector((state) => state.Home.events);
   useEffect(() => {
     dispatch((GetStuff()));
-  }, [dispatch,homeGroups]);
+  }, [dispatch]);
 
   return (
     <div id='openingDiv'>

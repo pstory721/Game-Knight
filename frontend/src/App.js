@@ -10,6 +10,7 @@ import { Organize } from "./components/OrganizingGroup/Organize";
 import { GroupPage } from "./components/Group-Page/Group-Page";
 import { Search } from "./components/search/Search";
 import { CreateVenue } from "./components/create-venue/create-venue";
+import { CreateEvent } from "./components/create-event/create-event";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function App() {
             <Search />
           </Route>
           <Route path="/create-event">
-            < l/>
+            <CreateEvent />
           </Route>
           <Route path="/create-venue">
             <CreateVenue />
