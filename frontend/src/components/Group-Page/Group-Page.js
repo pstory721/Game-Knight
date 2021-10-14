@@ -17,7 +17,7 @@ export function GroupPage() {
   }, [dispatch]);
 
   let userCheck;
-  if (sessionUser.id == group.ownerId) {
+  if (sessionUser.id == group?.ownerId) {
     userCheck = <EditDelete id={group?.id} />;
   }
 

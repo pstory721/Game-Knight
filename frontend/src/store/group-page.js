@@ -21,7 +21,7 @@ const UpdateGroup = (group1) => {
     group1,
   };
 };
-const AddUserGroup = (userGroup) => {
+const AdduserGroup = (userGroup) => {
   return {
     type: ADD_USERGROUP,
     userGroup,
@@ -35,7 +35,7 @@ export const AddUserGroup = (input) => async (dispatch) => {
   });
   if (response.ok) {
     const { userGroup } = await response.json();
-    dispatch(AddUserGroup(userGroup));
+    dispatch(AdduserGroup(userGroup));
   }
 };
 
@@ -82,6 +82,10 @@ const SingleGroupReducer = (state = initialState, action) => {
     case UPDATE_GROUP:
       newState.group1 = action.group1;
       return newState;
+    case ADD_USERGROUP:
+      newState.group1 = action.group1;
+      newState.events = action.events;
+      newState.userGroup = action.userGroup;
     default:
       return state;
   }

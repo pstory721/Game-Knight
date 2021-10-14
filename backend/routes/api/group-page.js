@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { group, event } = require("../../db/models");
+const { group, event,userGroup } = require("../../db/models");
 const router = express.Router();
 
 router.get(
