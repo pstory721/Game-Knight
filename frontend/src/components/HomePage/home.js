@@ -17,7 +17,7 @@ export function Home() {
     <div id='openingDiv'>
       <div>
         <header className='secondDiv'>
-          <h3>Welcome to GameKnight,{sessionUser.username}</h3>
+          <h3>Welcome to GameKnight,{sessionUser?.username}</h3>
         </header>
         <main>
           <div className='secondDiv'>
@@ -30,7 +30,7 @@ export function Home() {
             <p>Find people who like the same games as you</p>
             <h3> Here are some popular groups you may like!</h3>
             {homeGroups?.map(group => <div>
-              <Link to ={`/group-page/${group.id}`} key={`${group.id}`}>{group.type}</Link>
+              <Link to ={`/group-page/${group?.id}`} key={`${group?.id}`}>{group?.type}</Link>
             </div>)}
           </div>
         </main>
@@ -38,7 +38,7 @@ export function Home() {
           <h2>Attend a game starting soon</h2>
           <div>
             {homeEvents?.map(event => <div>
-              <Link to={`event-page/${event.id}`}key={`${event.id}`}>{event.name}</Link>
+              <Link to={`event-page/${event?.id}`}key={`${event?.id}`}>{event?.name}</Link>
               </div>)}
           </div>
         </div>

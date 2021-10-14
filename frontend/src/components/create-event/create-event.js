@@ -26,7 +26,10 @@ export function CreateEvent() {
   }, [dispatch]);
 
 
-  useEffect(() => {
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const errors = [];
     if (venueId === "") {
       errors.push("a venue is required");
@@ -44,10 +47,6 @@ export function CreateEvent() {
         errors.push("Capicity field is required");
       }
     setErrors(errors);
-  }, [venueId,catagoryId,name,date,capacity]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
     const payload = {
      hostId:sessionUser.id,
      venueId,

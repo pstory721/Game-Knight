@@ -18,7 +18,8 @@ export function Organize() {
   const[ errors, setErrors]=useState([]);
   let history = useHistory();
 
-  useEffect(() => {
+
+  const handleSubmit = async (e) => {
     const errors = [];
     if (type === "") {
       errors.push("Name field is required");
@@ -30,13 +31,11 @@ export function Organize() {
       errors.push("Description must be less than 140 characters");
     }
     setErrors(errors);
-  }, [type,description]);
-
-  const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       type,
       description,
+      ownerId:sessionUser.id
       // file
     };
     let createdGroup = await dispatch(PostGroup(payload))

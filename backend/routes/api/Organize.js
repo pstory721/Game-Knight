@@ -12,11 +12,12 @@ const groups = await group.findAll()
 
 
 router.post('/', asyncHandler(async function (req, res) {
-  const {type,description,file} = req.body
+  const {type,description,file,ownerId} = req.body
   const newGroup = await group.create({
     type,
     description,
-    file
+    file,
+    ownerId
   }
     )
     return res.json({newGroup});

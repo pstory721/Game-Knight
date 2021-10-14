@@ -1,113 +1,172 @@
-import { DeleteAGroup, PatchAGroup } from '../../store/group-page';
-import { useHistory,useParams } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { DeleteAEvent, PatchAEvent } from "../../store/event-page";
+import { GetStuff } from "../../store/home";
 
-export function EditDelete2 () {
-    const { id } = useParams();
-    const sessionUser = useSelector((state) => state.session.user);
-    const EditGroups = useSelector((state) => state.SingleGroup.group1);
-    const [type, setType] = useState("");
-    const [description, setDescription] = useState("");
-    const[ errors, setErrors]=useState([]);
-    const dispatch = useDispatch();
-    const history = useHistory()
-    const [showForm, setShowForm] = useState(false);
+export function EditDelete2() {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const sessionUser = useSelector((state) => state.session.user);
+  const venues = useSelector((state) => state.Home.venues);
+  const groups = useSelector((state) => state.Home.groups);
 
-    const openForm = () => {
-      if (showForm) return;
-      setShowForm(true);
-    };
-    function useOutsideAlerter(ref) {
-    useEffect(() => {
-      if (!showForm) return;
+  const [venueId, setVenueId] = useState("");
+  const [catagoryId, setCatagory] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [errors, setErrors] = useState([]);
+  let history = useHistory();
+  useEffect(() => {
+    dispatch(GetStuff());
+  }, [dispatch]);
 
-      const closeForm = () => {
-        setShowForm(false);
-      };
+  const [showForm, setShowForm] = useState(false);
 
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-        }
+  // const openForm = () => {
+  //   if (showForm) return;
+  //   setShowForm(true);
+  // };
+  // function useOutsideAlerter(ref) {
+  //   useEffect(() => {
+  //     if (!showForm) return;
+
+  //     const closeForm = () => {
+  //       setShowForm(false);
+  //     };
+
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //       }
+  //     }
+
+  //     document.addEventListener("click", closeForm);
+
+  //     return () => document.removeEventListener("click", closeForm);
+  //   }, [showForm]);
+  // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errors = [];
+    if (venueId === "") {
+      errors.push("a venue is required");
     }
+    if (catagoryId === "") {
+      errors.push("A group is required");
+    }
+    if (name === "") {
+      errors.push("Name field is required");
+    }
+    if (date === "") {
+      errors.push("A date is required");
+    }
+    if (capacity === "") {
+      errors.push("Capicity field is required");
+    }
+    setErrors(errors);
+    const payload = {
+      hostId: sessionUser.id,
+      venueId,
+      catagoryId,
+      name,
+      date,
+      capacity,
+    };
+    let updatedEvent = await dispatch(PatchAEvent(payload, id));
+  };
 
-      document.addEventListener('click', closeForm);
+  return (
+    <div className="secondDiv">
+       <button
+       onClick={() => setShowForm(true)} id="splashlinkbuttons">
+        Edit Event
+      </button>
+      {showForm &&(
+      <form className="secondDiv" onSubmit={handleSubmit}>
+        <ul className="errors">
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+        <label>
+          Venue
+          <select
+            name="venueId"
+            onChange={(e) => setVenueId(e.target.value)}
+            value={venueId}
+          >
+            <option value="" disabled>
+              Select a Venue
+            </option>
+            {venues?.map((venue) => (
+              <option value={venue.id} key={venue.id}>
+                {venue.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Group
+          <select
+            name="catagoryId"
+            onChange={(e) => setCatagory(e.target.value)}
+            value={catagoryId}
+          >
+            <option value="" disabled>
+              Select a Group
+            </option>
+            {groups?.map((group) => (
+              <option value={group.id} key={group.id}>
+                {group.type}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          name
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label>
+          date
+          <input
+            type="date"
+            name="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </label>
+        <label>
+          Capacity
+          <input
+            type="number"
+            name="capacity"
+            value={capacity}
+            onChange={(e) => setCapacity(e.target.value)}
+          />
+        </label>
 
-      return () => document.removeEventListener("click", closeForm);
-    }, [showForm]);
-  }
-    useEffect(() => {
-        const errors = [];
-        if (type === "") {
-          errors.push("Name field is required");
-        }
-        if (type.length > 60) {
-          errors.push("Name field must be 60 characters or less");
-        }
-        if (description.length > 140) {
-          errors.push("Description must be less than 140 characters");
-        }
-        setErrors(errors);
-      }, [type,description]);
-
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        const payload = {
-          type,
-          description,
-          // file
-        };
-        let updatedGroup = await dispatch(PatchAGroup(payload,id))
-
-      };
-
-    return(
-    <div >
-        <button id='splashlinkbuttons'onClick={openForm}>Edit Group</button>
-            {showForm &&(
-            <div id='spacerDiv'>
-            <form onSubmit={handleSubmit}>
-                <ul className="errors">
-                {errors.map((error) => (
-                    <li key={error}>{error}</li>
-                ))}
-                </ul>
-                <label>
-                Name
-                <input
-                    type="text"
-                    name="type"
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
-                />
-                </label>
-                <label>
-                Description
-                <textarea
-                    name="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-                </label>
-                {/* <FileUploader
-                onFileSelectSuccess={(file) => setSelectedFile(file)}
-                onFileSelectError={({ error }) => alert(error)}
-                /> */}
-
-                <button type="submit" disabled={errors.length > 0}>
-                Update your Group
-                </button>
-            </form>
-            </div>
-            )}
- <button id='splashlinkbuttons'
-        onClick={ () => {
-            dispatch(DeleteAGroup(id))
-            history.push('/home')
-        }}
-        >Delete Group
+        <button
+        type="submit" disabled={errors.length > 0}>
+          Update your Event!
         </button>
-
+      </form>
+      )}
+      <button
+        id="splashlinkbuttons"
+        onClick={() => {
+          dispatch(DeleteAEvent(id));
+          history.push("/home");
+        }}
+      >
+        Delete Group
+      </button>
     </div>
-    )
+  );
 }

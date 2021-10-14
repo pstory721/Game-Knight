@@ -20,7 +20,9 @@ export function CreateVenue() {
   const[ errors, setErrors]=useState([]);
   let history = useHistory();
 
-  useEffect(() => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const errors = [];
     if (name === "") {
       errors.push("Name field is required");
@@ -42,10 +44,6 @@ export function CreateVenue() {
       errors.push("please enter a valid zipcode");
     }
     setErrors(errors);
-  }, [name,address,city,state,zipCode]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
     const payload = {
       name,
       address,

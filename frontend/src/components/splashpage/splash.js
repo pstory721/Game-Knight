@@ -1,10 +1,10 @@
 import './splash.css';
 import { Link } from 'react-router-dom';
-
+import {useSelector } from 'react-redux';
 
 export function SplashPage (){
 
-
+const sessionUser = useSelector((state) => state.session.user);
 
 
 return (
@@ -34,7 +34,13 @@ return (
             <p>GameKnight lets you connect to other people in your are with the love for table top gaming</p>
             <div id='spacerDiv'>
                 <div>
-                   <Link to='/search' >Join a group</Link>
+                   <Link onClick={() =>{
+                       switch (sessionUser){
+                          case sessionUser:
+                            alert('Please signin or create an account with us')
+                            break
+                            }
+                   }} to='/search' >Join a group</Link>
                     <p>do what ya love</p>
                 </div>
                 <div>

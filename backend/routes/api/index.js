@@ -10,11 +10,14 @@ const createGroupRouter = require('./Organize')
 const groupPageRouter = require('./group-page')
 const venueCreateRouter = require('./create-venue')
 const EventCreateRouter = require('./create-event')
+const eventPageRouter = require('./event-page')
+
 router.use('/session', sessionRouter);
 router.use('/home',homeRouter)
 router.use('/users', usersRouter);
 router.use('/create-group',createGroupRouter)
 router.use('/group-page',groupPageRouter)
+router.use('/event-page',eventPageRouter)
 router.use('/create-venue',venueCreateRouter)
 router.use('/create-event',EventCreateRouter)
 router.post('/test', (req, res) => {
