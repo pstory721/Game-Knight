@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from 'react';
-import { GetStuff } from '../../store/home';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import './home.css';
+import React, { useState, useEffect } from "react";
+import { GetStuff } from "../../store/home";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import "./home.css";
 
 export function Home() {
   const dispatch = useDispatch();
@@ -10,50 +10,67 @@ export function Home() {
   const homeGroups = useSelector((state) => state.Home.groups);
   const homeEvents = useSelector((state) => state.Home.events);
   useEffect(() => {
-    dispatch((GetStuff()));
+    dispatch(GetStuff());
   }, [dispatch]);
 
   return (
-    <div id='openingDiv'>
+    <div>
       <div>
-        <header className='secondDiv'>
-          <h3>Welcome to GameKnight,{sessionUser?.username}</h3>
+        <header className="secondDiv">
+          <h1 id="header">
+            Welcome to GameKnight,{sessionUser?.username}
+          </h1>
         </header>
-        <main>
-          <div className='secondDiv'>
+        <main className="mainhome">
+          <div className="secondDiv">
             <h4>Find a game</h4>
-            <p>Games are always happening find one ya like</p>
-            <a>Discover Games</a>
+            <p className="homeptag">
+              Games are always happening find one ya like
+            </p>
+            <div>
+              <h2>Attend a game starting soon</h2>
+              <div>
+                {homeEvents?.map((event) => (
+                  <div>
+                    <Link className='links' to={`event-page/${event?.id}`} key={`${event?.id}`}>
+                      {event?.name}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className='secondDiv'>
+          <div className="secondDiv">
             <h4>Join a group</h4>
-            <p>Find people who like the same games as you</p>
+            <p className="homeptag">
+              Find people who like the same games as you
+            </p>
             <h3> Here are some popular groups you may like!</h3>
-            {homeGroups?.map(group => <div>
-              <Link to ={`/group-page/${group?.id}`} key={`${group?.id}`}>{group?.type}</Link>
-            </div>)}
+            {homeGroups?.map((group) => (
+              <div>
+                <Link className='links' to={`/group-page/${group?.id}`} key={`${group?.id}`}>
+                  {group?.type}
+                </Link>
+              </div>
+            ))}
           </div>
         </main>
-        <div className='secondDiv'>
-          <h2>Attend a game starting soon</h2>
-          <div>
-            {homeEvents?.map(event => <div>
-              <Link to={`event-page/${event?.id}`}key={`${event?.id}`}>{event?.name}</Link>
-              </div>)}
-          </div>
+      <div className='creatediv'>
+        <div>
+          <Link className='create' to="/create-group">Start a Group</Link>
+          <p className="homeptag">Make "friends"</p>
         </div>
         <div>
-                <Link to='/create-group' >Start a Group</Link>
-                    <p>Make "friends"</p>
-               </div>
-               <div>
-                <Link to='/create-event' >Add an event to existing groups</Link>
-                    <p>Make "friends"</p>
-                </div>
-                <div>
-                <Link to='/create-venue' >How do we know where the funs at without a venue? Create one here</Link>
-                    <p>Make "friends"</p>
-                </div>
+          <Link className='create' to="/create-event">Add an event to existing groups</Link>
+          <p className="homeptag">Make "friends"</p>
+        </div>
+        <div>
+          <Link className='create' to="/create-venue">
+            How do we know where the funs at without a venue? Create one here
+          </Link>
+          <p className="homeptag">Make "friends"</p>
+          </div>
+        </div>
       </div>
     </div>
   );

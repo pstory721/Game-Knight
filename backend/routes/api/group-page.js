@@ -32,4 +32,13 @@ router.put("/:id", asyncHandler(async function (req, res) {
   )
   return res.json({UpdatedGroup});
 }));
+router.post('/', asyncHandler(async function (req, res) {
+  const {userId,groupId} = req.body
+  const newUserGroup = await userGroup.create({
+      userId,
+      groupId
+  }
+    )
+    return res.json({newUserGroup});
+}))
 module.exports = router;

@@ -17,7 +17,7 @@ export function EventPage() {
   }, [dispatch]);
 
   let userCheck;
-  if(sessionUser.id === event?.hostId){
+  if(sessionUser.id == event?.hostId){
     userCheck = (
       <EditDelete2 id={event?.id}/>
     )

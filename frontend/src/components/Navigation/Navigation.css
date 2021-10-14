@@ -4,12 +4,9 @@
     display: flex;
     justify-content: space-around;
   }
-  #splashlinkbuttons {
-    text-align: center;
-    margin: 6px;
-    height: 0.8cm;
-    width: 3cm;
-    border-radius: 5px;
-    border: none;
-    background-color: #000000;
-  }
+  .myButton {
+    color: rgb(255, 255, 255); font-size: 15px; line-height: 15px; padding: 7px; border-radius: 13px; font-family: "Arial Black", Gadget, sans-serif; font-weight: 400; text-decoration: none solid rgb(68, 68, 68); font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(164, 44, 20) 0%, rgb(203, 70, 70) 0%, rgb(4, 16, 25) 100%); box-shadow: rgba(0, 0, 0, 0.33) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); display: inline-block;}
+    .myButton:hover {
+    background: tomato; }
+    .myButton:active {
+    background: #041019; }
