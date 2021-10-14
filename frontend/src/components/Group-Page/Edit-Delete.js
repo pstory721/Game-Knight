@@ -14,28 +14,28 @@ export function EditDelete() {
   const history = useHistory();
   const [showForm, setShowForm] = useState(false);
 
-  const openForm = () => {
-    if (showForm) return;
-    setShowForm(true);
-  };
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      if (!showForm) return;
+  // const openForm = () => {
+  //   if (showForm) return;
+  //   setShowForm(true);
+  // };
+  // function useOutsideAlerter(ref) {
+  //   useEffect(() => {
+  //     if (!showForm) return;
 
-      const closeForm = () => {
-        setShowForm(false);
-      };
+  //     const closeForm = () => {
+  //       setShowForm(false);
+  //     };
 
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-        }
-      }
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //       }
+  //     }
 
-      document.addEventListener("click", closeForm);
+  //     document.addEventListener("click", closeForm);
 
-      return () => document.removeEventListener("click", closeForm);
-    }, [showForm]);
-  }
+  //     return () => document.removeEventListener("click", closeForm);
+  //   }, [showForm]);
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,6 +49,7 @@ export function EditDelete() {
     if (description.length > 140) {
       errors.push("Description must be less than 140 characters");
     }
+    setShowForm(false)
     setErrors(errors);
     const payload = {
       type,
@@ -60,7 +61,7 @@ export function EditDelete() {
 
   return (
     <div>
-      <button id="splashlinkbuttons" onClick={openForm}>
+      <button  onClick={() => setShowForm(true)} id="splashlinkbuttons">
         Edit Group
       </button>
       {showForm && (

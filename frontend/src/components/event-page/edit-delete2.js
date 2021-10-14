@@ -65,6 +65,7 @@ export function EditDelete2() {
     if (capacity === "") {
       errors.push("Capicity field is required");
     }
+    setShowForm(false)
     setErrors(errors);
     const payload = {
       hostId: sessionUser.id,
@@ -153,7 +154,7 @@ export function EditDelete2() {
         </label>
 
         <button
-        type="submit" disabled={errors.length > 0}>
+        type="submit"  disabled={errors.length > 0}>
           Update your Event!
         </button>
       </form>

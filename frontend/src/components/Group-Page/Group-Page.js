@@ -11,6 +11,7 @@ export function GroupPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const group = useSelector((state) => state.SingleGroup.group1);
   const groupEvents = useSelector((state) => state.SingleGroup.events);
+  const userGroup = useSelector((state) => state.SingleGroup.userGroup);
   console.log(sessionUser);
   useEffect(() => {
     dispatch(GetGroup(id));
@@ -19,6 +20,10 @@ export function GroupPage() {
   let userCheck;
   if (sessionUser.id == group?.ownerId) {
     userCheck = <EditDelete id={group?.id} />;
+  }
+  let groupcheck;
+  if(userGroup){
+
   }
 
   return (

@@ -1,8 +1,8 @@
 import { csrfFetch } from "./csrf";
 const GROUP_FILL = "session/ShowGroup";
-const DELETE_GROUP = "session/ShowGroup";
-const UPDATE_GROUP = "session/ShowGroup";
-const ADD_USERGROUP = "session/ShowGroup";
+const DELETE_GROUP = "session/DeleteGroup";
+const UPDATE_GROUP = "session/UpdateGroup";
+const ADD_USERGROUP = "session/AddUserGroup";
 const ShowGroup = (group1, events) => {
   return {
     type: GROUP_FILL,
@@ -34,8 +34,8 @@ export const AddUserGroup = (input) => async (dispatch) => {
     body: JSON.stringify(input),
   });
   if (response.ok) {
-    const { userGroup } = await response.json();
-    dispatch(AdduserGroup(userGroup));
+    const { newUserGroup} = await response.json();
+    dispatch(AdduserGroup(newUserGroup));
   }
 };
 
@@ -75,17 +75,20 @@ const SingleGroupReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.group1 = action.group1;
       newState.events = action.events;
+      newState.userGroup = action.userGroup;
       return newState;
     case DELETE_GROUP:
+      newState = Object.assign({}, state);
       delete newState[action.group1];
       return newState;
     case UPDATE_GROUP:
+      newState = Object.assign({}, state);
       newState.group1 = action.group1;
       return newState;
     case ADD_USERGROUP:
-      newState.group1 = action.group1;
-      newState.events = action.events;
+      newState = Object.assign({}, state);
       newState.userGroup = action.userGroup;
+      return newState
     default:
       return state;
   }
