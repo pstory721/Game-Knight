@@ -51,7 +51,7 @@ dispatch(UpdateEvent(UpdatedEvent));
 };
 
 const initialState = {events:[] };
-const SingleGroupReducer = (state = initialState, action) => {
+const SingleEventReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
       case EVENT_FILL:
@@ -68,4 +68,4 @@ const SingleGroupReducer = (state = initialState, action) => {
         return state;
     }
   };
-export default SingleGroupReducer
+export default SingleEventReducer

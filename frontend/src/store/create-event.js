@@ -17,15 +17,16 @@ export const PostEvent = (input) => async (dispatch) => {
   body: JSON.stringify( input ),
   })
   if (response.ok) {
-    const {events,venues,groups} = await response.json();
-    dispatch(CreateEvent(events,venues,groups));
+    const {newEvent,venues,groups} = await response.json();
+    dispatch(CreateEvent(newEvent,venues,groups));
   }
 };
 const initialState = { events: [],venues:[],groups:[]}
 
 const sortList = (list) => {
+
     return list.sort((eventA, eventB) => {
-      return eventA.createdAt- eventB.createdAt;
+      return eventA.name - eventB.name;
     }).map((event) => event.name);
   };
 const CreateEventReducer = (state = initialState, action) => {

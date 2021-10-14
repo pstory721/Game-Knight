@@ -12,7 +12,7 @@ import { GetStuff } from "../../store/home";
 export function CreateEvent() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const venues = useSelector((state) => state.Home.Venues)
+  const venues = useSelector((state) => state.Home.venues)
   const groups = useSelector((state) => state.Home.groups);
   const [venueId, setVenueId] = useState("");
   const [catagoryId, setCatagory] = useState("");
@@ -80,12 +80,12 @@ export function CreateEvent() {
             >
                 <option value='' disabled>Select a Venue</option>
                 {venues?.map(venue =>
-                <option key={venue.id}>{venue.name}</option>
+                <option value={venue.id}key={venue.id}>{venue.name}</option>
                 )}
             </select>
             </label>
             <label>
-            Venue
+            Group
             <select
                 name='catagoryId'
                 onChange={e => setCatagory(e.target.value)}
@@ -93,7 +93,7 @@ export function CreateEvent() {
             >
                 <option value='' disabled>Select a Group</option>
                 {groups?.map(group =>
-                <option key={group.id}>{group.type}</option>
+                <option value={group.id} key={group.id}>{group.type}</option>
                 )}
             </select>
             </label>
@@ -109,16 +109,16 @@ export function CreateEvent() {
         <label>
         date
           <input
-            type="text"
+            type="date"
             name="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </label>
         <label>
-          Group
+          Capacity
           <input
-            type="text"
+            type="number"
             name="capacity"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}

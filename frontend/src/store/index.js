@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import CreateEventReducer from './create-event';
 import CreateGroupReducer from './create-Group';
 import CreateVenueReducer from './create-venue';
+import SingleEventReducer from './event-page';
 import SingleGroupReducer from './group-page';
 import HomeReducer from './home';
 import sessionReducer from './session';
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     CreateGroup: CreateGroupReducer,
     SingleGroup: SingleGroupReducer,
     CreateVenue: CreateVenueReducer,
-    CreateEvent: CreateEventReducer
+    CreateEvent: CreateEventReducer,
+    SingleEvent: SingleEventReducer
   });
 
 let enhancer;

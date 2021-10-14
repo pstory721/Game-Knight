@@ -48,7 +48,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
   User.hasMany(models.event,{foreignKey:"hostId"})
-  User.hasMany(models.Venue,{foreignKey:"venueId"})
   User.hasMany(models.rsvp,{foreignKey:"userId"})
   const columnMapping = {
     through: "userGroup",
