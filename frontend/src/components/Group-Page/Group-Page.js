@@ -22,8 +22,20 @@ export function GroupPage() {
     userCheck = <EditDelete id={group?.id} />;
   }
   let groupcheck;
-  if(userGroup){
-
+  if(userGroup?.userId !== sessionUser.id){
+    groupcheck =     <div>
+    <button
+      onClick={() => {
+        const payload = {
+          userId: sessionUser.id,
+          groupId: group.id,
+        };
+        dispatch(AddUserGroup(payload));
+      }}
+    >
+      Join
+    </button>
+  </div>
   }
 
   return (
@@ -52,19 +64,7 @@ export function GroupPage() {
             <li>Group pictures</li>
             <li>group members</li>
           </ul>
-          <div>
-            <button
-              onClick={() => {
-                const payload = {
-                  userId: sessionUser.id,
-                  groupId: group.id,
-                };
-                dispatch(AddUserGroup(payload));
-              }}
-            >
-              Join
-            </button>
-          </div>
+          {groupcheck}
         </div>
       </div>
     </main>

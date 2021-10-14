@@ -3,11 +3,12 @@ const GROUP_FILL = "session/ShowGroup";
 const DELETE_GROUP = "session/DeleteGroup";
 const UPDATE_GROUP = "session/UpdateGroup";
 const ADD_USERGROUP = "session/AddUserGroup";
-const ShowGroup = (group1, events) => {
+const ShowGroup = (group1, events,sessionGroups) => {
   return {
     type: GROUP_FILL,
     group1,
     events,
+    sessionGroups
   };
 };
 const DeleteGroup = () => {
@@ -42,8 +43,8 @@ export const AddUserGroup = (input) => async (dispatch) => {
 export const GetGroup = (id) => async (dispatch) => {
   const response = await fetch(`/api/group-page/${id}`);
   if (response.ok) {
-    const { group1, events } = await response.json();
-    dispatch(ShowGroup(group1, events));
+    const { group1, events, sessionGroups } = await response.json();
+    dispatch(ShowGroup(group1, events,sessionGroups));
   }
 };
 export const DeleteAGroup = (id) => async (dispatch) => {

@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { event } = require("../../db/models");
+const { event,rsvp } = require("../../db/models");
 const router = express.Router();
 
 router.get(
@@ -29,4 +29,13 @@ router.put("/:id", asyncHandler(async function (req, res) {
   )
   return res.json({UpdatedEvent});
 }));
+router.post('/', asyncHandler(async function (req, res) {
+  const {eventId,userId} = req.body
+  const newrsvp = await rsvp.create({
+    eventId,
+    userId
+  }
+    )
+    return res.json({newrsvp});
+}))
 module.exports = router;
