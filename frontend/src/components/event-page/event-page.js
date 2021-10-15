@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams,Link } from 'react-router-dom';
 import { EditDelete2 } from './edit-delete2';
-import { GetEvent } from '../../store/event-page';
+import { GetEvent, PostARsvp } from '../../store/event-page';
 
 
 
@@ -11,6 +11,7 @@ export function EventPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const event = useSelector((state) => state.SingleEvent.events);
+  const rsvp = useSelector((state) => state.SingleEvent.rsvps);
 
   useEffect(() => {
     dispatch((GetEvent(id)));
@@ -22,7 +23,22 @@ export function EventPage() {
       <EditDelete2 id={event?.id}/>
     )
   }
-
+  let eventcheck;
+  if( !rsvp.some((ele) => ele.userId === +id)){
+    eventcheck =<div>
+    <button
+      onClick={() => {
+        const payload = {
+          userId: sessionUser.id,
+          eventId: event.id,
+        };
+        dispatch(PostARsvp(payload));
+      }}
+    >
+     RSVP
+    </button>
+  </div>
+  }
 
 
   return (
@@ -37,6 +53,7 @@ export function EventPage() {
             <p>{`Hosted By:${event?.hostId} at ${event?.venueId} on ${event?.date},${event?.capacity} amount of people are invited.`}</p>
           </div>
           {userCheck}
+          {eventcheck}
         </div>
     </div>
   )

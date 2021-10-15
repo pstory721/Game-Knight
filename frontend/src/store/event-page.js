@@ -3,10 +3,11 @@ const EVENT_FILL = "session/ShowEvent";
 const DELETE_EVENT = "session/DeleteEvent";
 const UPDATE_EVENT = "session/UpdateEvent";
 const RSVP_EVENT = "session/RsvpEvent";
-const ShowEvent = (events) => {
+const ShowEvent = (events,rsvps) => {
   return {
     type: EVENT_FILL,
     events,
+    rsvps
   };
 };
 const DeleteEvent = () => {
@@ -41,8 +42,8 @@ export const PostARsvp = (input) => async (dispatch) => {
 export const GetEvent = (id) => async (dispatch) => {
   const response = await fetch(`/api/event-page/${id}`);
   if (response.ok) {
-    const { events } = await response.json();
-    dispatch(ShowEvent(events));
+    const { events,rsvps } = await response.json();
+    dispatch(ShowEvent(events,rsvps));
   }
 };
 export const DeleteAEvent = (id) => async (dispatch) => {
@@ -73,6 +74,7 @@ const SingleEventReducer = (state = initialState, action) => {
     case EVENT_FILL:
       newState = Object.assign({}, state);
       newState.events = action.events;
+      newState.rsvps = action.rsvps;
       return newState;
     case DELETE_EVENT:
       newState = Object.assign({}, state);

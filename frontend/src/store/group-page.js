@@ -76,7 +76,7 @@ const SingleGroupReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.group1 = action.group1;
       newState.events = action.events;
-      newState.userGroup = action.userGroup;
+      newState.userGroup = action.sessionGroups;
       return newState;
     case DELETE_GROUP:
       newState = Object.assign({}, state);
@@ -87,8 +87,8 @@ const SingleGroupReducer = (state = initialState, action) => {
       newState.group1 = action.group1;
       return newState;
     case ADD_USERGROUP:
-      newState = Object.assign({}, state);
-      newState.userGroup = action.userGroup;
+      newState = {...state,userGroup:[...state.userGroup]}
+      newState.userGroup.push(action.userGroup)
       return newState
     default:
       return state;

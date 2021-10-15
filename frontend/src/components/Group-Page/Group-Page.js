@@ -18,12 +18,14 @@ export function GroupPage() {
   }, [dispatch]);
 
   let userCheck;
+
+  userGroup.every((ele) => ele.userId !== sessionUser.id)
   if (sessionUser.id == group?.ownerId) {
     userCheck = <EditDelete id={group?.id} />;
   }
   let groupcheck;
-  if(userGroup?.userId !== sessionUser.id){
-    groupcheck =     <div>
+  if( !userGroup.some((ele) => ele.groupId === +id)){
+    groupcheck =<div>
     <button
       onClick={() => {
         const payload = {

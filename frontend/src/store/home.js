@@ -15,7 +15,7 @@ export const GetStuff = () => async (dispatch) => {
     const Stuff = await response.json();
     dispatch(ShowStuff(Stuff));
   }
-};const initialState = { groups: [],events:[],venues:[] };
+};const initialState = { groups: [],events:[],venues:[],userGroups:[] };
 const HomeReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
@@ -24,6 +24,7 @@ const HomeReducer = (state = initialState, action) => {
         newState.groups = action.payload.groups
         newState.events = action.payload.events
         newState.venues = action.payload.venues
+        newState.userGroups = action.payload.userGroups
         return newState
         default:
         return state;

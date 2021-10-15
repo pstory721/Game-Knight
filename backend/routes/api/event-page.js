@@ -2,12 +2,17 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { event,rsvp } = require("../../db/models");
 const router = express.Router();
+const {requireAuth}= require("../../utils/auth")
 
 router.get(
   "/:id",
+  requireAuth,
   asyncHandler(async function (req, res) {
     const events = await event.findByPk(req.params.id);
-    return res.json({ events});
+    const rsvps = await rsvp.findAll({
+      where:{userId:req.user.id}
+    })
+    return res.json({ events,rsvps});
   })
 );
 

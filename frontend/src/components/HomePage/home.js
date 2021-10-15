@@ -9,6 +9,7 @@ export function Home() {
   const sessionUser = useSelector((state) => state.session.user);
   const homeGroups = useSelector((state) => state.Home.groups);
   const homeEvents = useSelector((state) => state.Home.events);
+  const userGroups = useSelector((state) => state.Home.userGroups);
   useEffect(() => {
     dispatch(GetStuff());
   }, [dispatch]);
@@ -34,6 +35,23 @@ export function Home() {
                   <div>
                     <Link className='links' to={`event-page/${event?.id}`} key={`${event?.id}`}>
                       {event?.name}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="secondDiv">
+            <h4>Your games and events</h4>
+            <p className="homeptag">
+            </p>
+            <div>
+              <h2>your groups</h2>
+              <div>
+                {userGroups?.map((group) => (
+                  <div>
+                    <Link className='links' to={`/group-page/${group?.id}`} key={`${group?.id}`}>
+                      {group?.groupId}
                     </Link>
                   </div>
                 ))}

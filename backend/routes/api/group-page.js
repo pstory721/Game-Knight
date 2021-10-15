@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { group, event,userGroup } = require("../../db/models");
 const router = express.Router();
-const requireAuth = require("../../utils/auth")
+const {requireAuth}= require("../../utils/auth")
 
 router.get(
   "/:id",
