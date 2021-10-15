@@ -16,6 +16,7 @@ export function EditDelete2() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [capacity, setCapacity] = useState("");
+  const [file, setfile] = useState("");
   const [errors, setErrors] = useState([]);
   let history = useHistory();
   useEffect(() => {
@@ -65,6 +66,9 @@ export function EditDelete2() {
     if (capacity === "") {
       errors.push("Capicity field is required");
     }
+    if (file.length >  255) {
+      errors.push("url must be less than 255 characters");
+    }
     setShowForm(false)
     setErrors(errors);
     const payload = {
@@ -74,6 +78,7 @@ export function EditDelete2() {
       name,
       date,
       capacity,
+      file
     };
     let updatedEvent = await dispatch(PatchAEvent(payload, id));
   };
@@ -150,6 +155,15 @@ export function EditDelete2() {
             name="capacity"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
+          />
+        </label>
+        <label>
+          Image Url
+          <input
+            type="text"
+            name="file"
+            value={file}
+            onChange={(e) => setfile(e.target.value)}
           />
         </label>
 

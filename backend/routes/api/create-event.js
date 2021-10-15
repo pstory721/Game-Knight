@@ -14,14 +14,15 @@ router.get('/', asyncHandler(async function (_req, res) {
 
 
     router.post('/', asyncHandler(async function (req, res) {
-      const {hostId,venueId,catagoryId,name,date,capacity} = req.body
+      const {hostId,venueId,catagoryId,name,date,capacity,file} = req.body
       const newEvent = await event.create({
         hostId,
         venueId,
         catagoryId,
         name,
         date,
-        capacity
+        capacity,
+        file
       }
         )
         return res.json({newEvent});

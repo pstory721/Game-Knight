@@ -47,6 +47,9 @@ export function CreateEvent() {
       if (capacity === "") {
         errors.push("Capicity field is required");
       }
+      if (file.length >  255) {
+        errors.push("url must be less than 255 characters");
+      }
     setErrors(errors);
     const payload = {
      hostId:sessionUser.id,

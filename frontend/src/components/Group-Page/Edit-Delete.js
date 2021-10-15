@@ -9,6 +9,7 @@ export function EditDelete() {
   const EditGroups = useSelector((state) => state.SingleGroup.group1);
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
+  const [file, setFile] = useState("");
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -49,12 +50,15 @@ export function EditDelete() {
     if (description.length > 140) {
       errors.push("Description must be less than 140 characters");
     }
+    if (file.length >  255) {
+      errors.push("url must be less than 255 characters");
+    }
     setShowForm(false)
     setErrors(errors);
     const payload = {
       type,
       description,
-      // file
+      file,
     };
     let updatedGroup = await dispatch(PatchAGroup(payload, id));
   };
@@ -89,10 +93,16 @@ export function EditDelete() {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </label>
-            {/* <FileUploader
-                onFileSelectSuccess={(file) => setSelectedFile(file)}
-                onFileSelectError={({ error }) => alert(error)}
-                /> */}
+            <label>
+            imgUrl
+          <input
+            type="text"
+            name="file"
+            value={file}
+            onChange={(e) => setFile(e.target.value)}
+          />
+        </label>
+
 
             <button type="submit" disabled={errors.length > 0}>
               Update your Group

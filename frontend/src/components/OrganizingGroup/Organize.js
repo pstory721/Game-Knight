@@ -15,6 +15,7 @@ export function Organize() {
 
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
+  const [file, setFile] = useState("");
   const[ errors, setErrors]=useState([]);
   let history = useHistory();
 
@@ -30,13 +31,16 @@ export function Organize() {
     if (description.length > 140) {
       errors.push("Description must be less than 140 characters");
     }
+    if (file.length >  255) {
+      errors.push("url must be less than 255 characters");
+    }
     setErrors(errors);
     e.preventDefault();
     const payload = {
       type,
       description,
-      ownerId:sessionUser.id
-      // file
+      ownerId:sessionUser.id,
+      file
     };
     let createdGroup = await dispatch(PostGroup(payload))
     history.push("/home");
@@ -73,10 +77,15 @@ export function Organize() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </label>
-        {/* <FileUploader
-          onFileSelectSuccess={(file) => setSelectedFile(file)}
-          onFileSelectError={({ error }) => alert(error)}
-        /> */}
+        <label>
+          imgUrl
+          <input
+            type="text"
+            name="file"
+            value={file}
+            onChange={(e) => setFile(e.target.value)}
+          />
+        </label>
 
         <button type="submit" disabled={errors.length > 0}>
           Create your group!
