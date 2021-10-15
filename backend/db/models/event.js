@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER
     },
+       file: {
+      type: DataTypes.STRING
+    },
   }, {});
   event.associate = function(models) {
     event.belongsTo(models.User, {foreignKey:"hostId" })

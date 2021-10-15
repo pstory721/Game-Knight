@@ -85,8 +85,9 @@ const SingleEventReducer = (state = initialState, action) => {
       newState.events = action.events;
       return newState;
     case RSVP_EVENT:
-      newState = Object.assign({}, state);
-      newState.rsvps = action.rsvps;
+      newState = {...state,rsvps:[...state.rsvps]}
+      newState.rsvps.push(action.rsvps)
+      return newState
     default:
       return state;
   }

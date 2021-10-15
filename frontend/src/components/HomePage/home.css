@@ -58,6 +58,7 @@ text-transform: none;
 .creatediv{
     margin-top: 150px;
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
     justify-content: space-evenly;
@@ -86,4 +87,11 @@ text-decoration: underline solid rgb(68, 68, 68);
 font-style: normal;
 font-variant: normal;
 text-transform: none;
+}
+.create{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

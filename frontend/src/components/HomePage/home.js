@@ -51,7 +51,7 @@ export function Home() {
                 {userGroups?.map((group) => (
                   <div>
                     <Link className='links' to={`/group-page/${group?.id}`} key={`${group?.id}`}>
-                      {group?.groupId}
+                      {group?.group?.type}
                     </Link>
                   </div>
                 ))}
@@ -74,15 +74,15 @@ export function Home() {
           </div>
         </main>
       <div className='creatediv'>
-        <div>
+        <div className='create'>
           <Link className='create' to="/create-group">Start a Group</Link>
           <p className="homeptag">Make "friends"</p>
         </div>
-        <div>
+        <div div className='create'>
           <Link className='create' to="/create-event">Add an event to existing groups</Link>
           <p className="homeptag">Make "friends"</p>
         </div>
-        <div>
+        <div div className='create'>
           <Link className='create' to="/create-venue">
             How do we know where the funs at without a venue? Create one here
           </Link>

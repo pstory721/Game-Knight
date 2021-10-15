@@ -24,7 +24,7 @@ export function EventPage() {
     )
   }
   let eventcheck;
-  if( !rsvp.some((ele) => ele.userId === +id)){
+  if( !rsvp.some((ele) => ele.eventId === +id)){
     eventcheck =<div>
     <button
       onClick={() => {
@@ -44,7 +44,7 @@ export function EventPage() {
   return (
     <div>
         <div>
-          <img alt='event image here'></img>
+          <img src={`${event?.file}`} alt='event image here'></img>
         </div>
 
         <div>

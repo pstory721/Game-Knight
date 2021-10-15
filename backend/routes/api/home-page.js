@@ -14,6 +14,7 @@ router.get(
     const venues = await Venue.findAll();
     const userGroups = await userGroup.findAll({
       where: { userId: req.user.id },
+      include:group
     });
     return res.json({ events, groups, venues, userGroups });
   })

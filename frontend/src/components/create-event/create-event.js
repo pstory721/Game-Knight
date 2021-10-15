@@ -19,6 +19,7 @@ export function CreateEvent() {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [capacity, setCapacity] = useState("");
+  const [file, setfile] = useState("");
   const[ errors, setErrors]=useState([]);
   let history = useHistory();
   useEffect(() => {
@@ -53,7 +54,8 @@ export function CreateEvent() {
      catagoryId,
      name,
      date,
-     capacity
+     capacity,
+     file
     };
     let createdEvent = await dispatch(PostEvent(payload))
     history.push("/home");
@@ -121,6 +123,15 @@ export function CreateEvent() {
             name="capacity"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
+          />
+        </label>
+        <label>
+          Image Url
+          <input
+            type="text"
+            name="file"
+            value={file}
+            onChange={(e) => setfile(e.target.value)}
           />
         </label>
 
