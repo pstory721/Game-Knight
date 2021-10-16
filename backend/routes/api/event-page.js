@@ -23,7 +23,7 @@ router.delete("/:id", asyncHandler(async function (req, res) {
 }));
 router.put("/:id", asyncHandler(async function (req, res) {
   const UpdatedEvent = await event.findByPk(req.params.id)
-  const id = req.body.id
+  const id = req.params
   delete req.body.id
   await UpdatedEvent.update(
     req.body,

@@ -63,8 +63,6 @@ export function GroupPage() {
                 </Link>
               </div>
             ))}
-            <li>Group pictures</li>
-            <li>group members</li>
           </ul>
           {groupcheck}
         </div>

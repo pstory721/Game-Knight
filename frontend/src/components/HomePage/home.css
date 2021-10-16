@@ -6,8 +6,10 @@
 }
 .secondDiv{
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    flex-direction: row;
     justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 h4{
@@ -56,7 +58,6 @@ text-transform: none;
     align-items: center;
 }
 .creatediv{
-    margin-top: 150px;
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -65,19 +66,24 @@ text-transform: none;
     align-items: center;
 }
 .create{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: "Arial Black", Gadget, sans-serif;
-font-size: 25px;
+font-size: 30px;
 letter-spacing: 0px;
 word-spacing: 0px;
 color: #000000;
 font-weight: 400;
-text-decoration: underline solid rgb(68, 68, 68);
 font-style: normal;
 font-variant: normal;
 text-transform: none;
+font-weight: 400;
 }
 .links{
-    font-family: "Arial Black", Gadget, sans-serif;
+font-family: "Arial Black", Gadget, sans-serif;
 font-size: 15px;
 letter-spacing: 0px;
 word-spacing: 0px;
@@ -87,11 +93,19 @@ text-decoration: underline solid rgb(68, 68, 68);
 font-style: normal;
 font-variant: normal;
 text-transform: none;
+text-shadow: -2px 2px 0 rgb(105, 105, 105), 2px 2px 0 rgb(105, 105, 105), 2px -2px 0 rgb(105, 105, 105), -2px -2px 0 rgb(105, 105, 105);
 }
-.create{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+.middle{
+font-family: "Arial Black", Gadget, sans-serif;
+font-size: 25px;
+letter-spacing: 0px;
+word-spacing: 0px;
+color: #000000;
+font-weight: 400;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+width:500px;
+height: 500px;
 }

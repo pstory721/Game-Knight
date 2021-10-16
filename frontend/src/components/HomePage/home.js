@@ -23,11 +23,7 @@ export function Home() {
           </h1>
         </header>
         <main className="mainhome">
-          <div className="secondDiv">
-            <h4>Find a game</h4>
-            <p className="homeptag">
-              Games are always happening find one ya like
-            </p>
+          <div className="middle">
             <div>
               <h2>Attend a game starting soon</h2>
               <div>
@@ -41,10 +37,7 @@ export function Home() {
               </div>
             </div>
           </div>
-          <div className="secondDiv">
-            <h4>Your games and events</h4>
-            <p className="homeptag">
-            </p>
+          <div className="middle">
             <div>
               <h2>your groups</h2>
               <div>
@@ -58,11 +51,7 @@ export function Home() {
               </div>
             </div>
           </div>
-          <div className="secondDiv">
-            <h4>Join a group</h4>
-            <p className="homeptag">
-              Find people who like the same games as you
-            </p>
+          <div className="middle">
             <h3> Here are some popular groups you may like!</h3>
             {homeGroups?.map((group) => (
               <div>
@@ -76,17 +65,17 @@ export function Home() {
       <div className='creatediv'>
         <div className='create'>
           <Link className='create' to="/create-group">Start a Group</Link>
-          <p className="homeptag">Make "friends"</p>
+          <p className="homeptag">Start a group for whatever tabletop game you want,be it monopoly to D&D</p>
         </div>
-        <div div className='create'>
+        <div className='create'>
           <Link className='create' to="/create-event">Add an event to existing groups</Link>
-          <p className="homeptag">Make "friends"</p>
+          <p className="homeptag">Create an Event for that big day of 40K fun, or just to hangout with people of like intrests, the powers in your hands</p>
         </div>
-        <div div className='create'>
+        <div  className='create'>
           <Link className='create' to="/create-venue">
             How do we know where the funs at without a venue? Create one here
           </Link>
-          <p className="homeptag">Make "friends"</p>
+          <p className="homeptag">Let us know where to bring the snacks with the creation of your very own venue</p>
           </div>
         </div>
       </div>

@@ -3,3 +3,22 @@ body{
     background-image: url("img/istockphoto-1183955880-612x612.jpg");
    background-size: cover;
 }
+input[type=text], input[type=date],input[type=number
+],select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+button{
+    color: rgb(255, 255, 255); font-size: 15px; line-height: 15px; padding: 7px; border-radius: 13px; font-family: "Arial Black", Gadget, sans-serif; font-weight: 400; text-decoration: none solid rgb(68, 68, 68); font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(164, 44, 20) 0%, rgb(203, 70, 70) 0%, rgb(4, 16, 25) 100%); box-shadow: rgba(0, 0, 0, 0.33) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); display: inline-block;}
+button:hover {
+background: tomato; }
+button:active {
+background: #041019; }
+
+
+ul {
+    list-style-image: url();
+  }

@@ -1,14 +1,18 @@
 import './splash.css';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import {useSelector } from 'react-redux';
 
 export function SplashPage (){
 
 const sessionUser = useSelector((state) => state.session.user);
 
+if (sessionUser) return (
+    <Redirect to="/home" />
+  );
+
 
 return (
-<html >
+
 
     <div id='main'>
         <div id='openingDiv'>
@@ -29,26 +33,26 @@ return (
             <div id='spacerDiv'>
                 <div>
                    <Link className='homeLinks' onClick={() =>{
-                       switch (sessionUser){
-                          case sessionUser:
-                            alert('Please signin or create an account with us')
-                            break
-                            }
-                   }} to='/search' >Join a group</Link>
+                       alert('Please signin or create an account with us')
+                   }} to='/' >Join a group</Link>
                     <p className='homep'>do what ya love</p>
                 </div>
                 <div>
-                <Link className='homeLinks' to='/search' >Find an Event</Link>
+                <Link className='homeLinks' onClick={() =>{
+                       alert('Please signin or create an account with us')
+                   }} to='/' >Find an Event</Link>
                     <p className='homep'>do things with people</p>
                 </div>
                 <div>
-                <Link className='homeLinks' to='/create-group' >Start a Group</Link>
+                <Link className='homeLinks' onClick={() =>{
+                       alert('Please signin or create an account with us')
+                   }} to='/' >Start a Group</Link>
                     <p className='homep'>Make "friends"</p>
                 </div>
             </div>
         </div>
     </div>
-</html>
+
 
 
 )

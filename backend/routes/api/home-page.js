@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { User } = require("../../db/models");
-const { event, group, Venue, userGroup } = require("../../db/models");
+const { event, group, Venue, userGroup,rsvp } = require("../../db/models");
 const { requireAuth } = require("../../utils/auth");
 const router = express.Router();
 
@@ -16,7 +16,11 @@ router.get(
       where: { userId: req.user.id },
       include:group
     });
-    return res.json({ events, groups, venues, userGroups });
+    const rsvps = await rsvp.findAll({
+      where: { userId: req.user.id },
+      include:event
+    });
+    return res.json({ events, groups, venues, userGroups,rsvps });
   })
 );
 module.exports = router;
