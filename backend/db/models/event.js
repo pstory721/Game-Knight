@@ -37,6 +37,13 @@ module.exports = (sequelize, DataTypes) => {
     event.belongsTo(models.Venue, {foreignKey:"venueId" })
     event.belongsTo(models.group, {foreignKey:"catagoryId" })
     event.hasMany(models.rsvp, { foreignKey: "eventId" });
+    const columnMapping1 = {
+      through: "rsvp",
+      otherKey: "userId",
+      foreignKey: "eventId",
+    };
+   event.belongsToMany(models.User, columnMapping1)
   };
+
   return event;
 };

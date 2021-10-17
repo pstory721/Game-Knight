@@ -58,7 +58,7 @@ export function GroupPage() {
           <ul>
             {groupEvents?.map((event) => (
               <div>
-                <Link to={`event-page/${event.id}`} key={`${event.id}`}>
+                <Link to={`/event-page/${event.id}`} key={`${event.id}`}>
                   {event.name}
                 </Link>
               </div>

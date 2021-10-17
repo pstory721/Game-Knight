@@ -20,7 +20,7 @@ router.get(
       where: { userId: req.user.id },
       include:event
     });
-    return res.json({ events, groups, venues, userGroups,rsvps });
+    return res.json({ events, groups, venues, userGroups,rsvps});
   })
 );
 module.exports = router;

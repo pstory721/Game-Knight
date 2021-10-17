@@ -56,7 +56,12 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.belongsToMany(models.group, columnMapping)
 
-
+  const columnMapping1 = {
+    through: "rsvp",
+    otherKey: "eventId",
+    foreignKey: "userId",
+  };
+  User.belongsToMany(models.event, columnMapping1)
 
   };
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
