@@ -22,13 +22,13 @@ function LoginForm() {
   };
 
   return (
-    <form className="modal" onSubmit={handleSubmit}>
+    <form className="modal-content" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
+      <label className='margin'>
         Username or Email
         <input
           type="text"
@@ -37,7 +37,7 @@ function LoginForm() {
           required
         />
       </label>
-      <label>
+      <label  className='margin'>
         Password
         <input
           type="password"

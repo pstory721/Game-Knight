@@ -12,6 +12,7 @@ import { Search } from "./components/search/Search";
 import { CreateVenue } from "./components/create-venue/create-venue";
 import { CreateEvent } from "./components/create-event/create-event";
 import { EventPage } from "./components/event-page/event-page";
+import FooterComponent from "./components/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,7 +54,9 @@ function App() {
             <CreateVenue />
           </Route>
         </Switch>
+
       )}
+      <FooterComponent />
     </>
   );
 }

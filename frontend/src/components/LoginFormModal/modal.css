@@ -1,0 +1,16 @@
+.modal-content {
+    position: absolute;
+    top: 375px;
+    left: 720px;
+    background-color: rgb(105, 105, 105);
+    border: solid 1px tomato;
+    border-radius: 25px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+.margin{
+    margin-left: 27.5px;
+}

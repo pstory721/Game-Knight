@@ -26,7 +26,7 @@ function Navigation({ isLoaded }) {
 
     sessionhomebutton = (
     <>
-      <img src={process.env.PUBLIC_URL + "/img/favicon-32x32.png"} ></img>
+      <img src={process.env.PUBLIC_URL + "/img/favicon-32x32.png"}  alt="" ></img>
       <NavLink id='fu' exact to="/home">
         GameKnight
       </NavLink>
@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
   } else {
     sessionhomebutton = (
       <>
-      <img src={process.env.PUBLIC_URL + "/img/favicon-32x32.png"} ></img>
+      <img src={process.env.PUBLIC_URL + "/img/favicon-32x32.png"} alt="" ></img>
         <NavLink id='fu' exact to="/">
           GameKnight
         </NavLink>

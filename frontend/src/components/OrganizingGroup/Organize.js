@@ -55,7 +55,7 @@ export function Organize() {
         <div className='col-75'>
         <label>
           Name
-          <input
+          <input id='joe'
             type="text"
             name="type"
             value={type}
@@ -66,7 +66,7 @@ export function Organize() {
         <div className='col-75'>
         <label>
           Details
-          <textarea
+          <textarea id='joe'
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -76,7 +76,7 @@ export function Organize() {
         <div className='col-75'>
         <label>
           imgUrl
-          <input
+          <input id='joe'
             type="text"
             name="file"
             value={file}
@@ -85,7 +85,7 @@ export function Organize() {
         </label>
         </div>
 
-        <button type="submit" disabled={errors.length > 0}>
+        <button id='but' type="submit" disabled={errors.length > 0}>
           Create
         </button>
       </form>

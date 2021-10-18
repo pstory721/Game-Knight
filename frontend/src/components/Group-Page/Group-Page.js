@@ -12,7 +12,6 @@ export function GroupPage() {
   const group = useSelector((state) => state.SingleGroup.group1);
   const groupEvents = useSelector((state) => state.SingleGroup.events);
   const userGroup = useSelector((state) => state.SingleGroup.userGroup);
-  console.log(sessionUser);
   useEffect(() => {
     dispatch(GetGroup(id));
   }, [dispatch]);

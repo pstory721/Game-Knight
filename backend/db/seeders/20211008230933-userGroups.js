@@ -5,11 +5,24 @@ module.exports = {
 
       return queryInterface.bulkInsert('userGroups', [
         {
-          userId:4,
+          userId:1,
           groupId:1,
           createdAt: new Date(),
           updatedAt: new Date(),
-        }
+        },
+        {
+          userId:1,
+          groupId:2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId:1,
+          groupId:3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+       
 
      ], {});
 
