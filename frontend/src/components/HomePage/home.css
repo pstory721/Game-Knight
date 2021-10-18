@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: scroll;
+   
 }
 .secondDiv{
     display: flex;
@@ -12,7 +12,7 @@
     justify-content: center;
     justify-content: space-evenly;
     align-items: center;
-    overflow: scroll;
+
 }
 h4{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -66,7 +66,7 @@ text-transform: none;
     justify-content: center;
     justify-content: space-evenly;
     align-items: center;
-    overflow: scroll;
+
 }
 .create{
     display: flex;
@@ -84,7 +84,7 @@ font-style: normal;
 font-variant: normal;
 text-transform: none;
 font-weight: 400;
-overflow: scroll;
+
 }
 
 .links{
