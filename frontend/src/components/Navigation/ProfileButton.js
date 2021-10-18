@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
+import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -18,19 +20,21 @@ function ProfileButton({ user }) {
       setShowMenu(false);
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   const logout = (e) => {
     e.preventDefault();
+    history.push("/");
     dispatch(sessionActions.logout());
   };
 
   return (
     <>
-      <button id='splashlinkbuttons' onClick={openMenu}>
+      <button id="splashlinkbuttons" onClick={openMenu}>
+        profile
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (

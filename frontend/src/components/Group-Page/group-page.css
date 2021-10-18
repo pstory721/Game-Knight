@@ -1,22 +1,57 @@
-
-.secondDiv{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.secondDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#spacerDiv{
-    display: flex;
-    height: 50%;
-    width: 50%;
-    flex-direction: row;
-    justify-content: space-between;
-
+#spacerDiv {
+  display: flex;
+  height: 50%;
+  width: 50%;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #splashlinkbuttons {
-    color: rgb(255, 255, 255); font-size: 15px; line-height: 15px; padding: 7px; border-radius: 13px; font-family: "Arial Black", Gadget, sans-serif; font-weight: 400; text-decoration: none solid rgb(68, 68, 68); font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(164, 44, 20) 0%, rgb(203, 70, 70) 0%, rgb(4, 16, 25) 100%); box-shadow: rgba(0, 0, 0, 0.33) 5px 5px 15px 5px; border: 2px solid rgb(28, 110, 164); display: inline-block;}
-    #splashlinkbuttons:hover {
-    background: #A42C14; }
-    #splashlinkbuttons:active {
-    background: #041019; }
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  line-height: 15px;
+  padding: 7px;
+  border-radius: 13px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-weight: 400;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(164, 44, 20) 0%,
+    rgb(203, 70, 70) 0%,
+    rgb(4, 16, 25) 100%
+  );
+  box-shadow: rgba(0, 0, 0, 0.33) 5px 5px 15px 5px;
+  border: 2px solid rgb(28, 110, 164);
+  display: inline-block;
+}
+#splashlinkbuttons:hover {
+  background: #a42c14;
+}
+#splashlinkbuttons:active {
+  background: #041019;
+}
+
+.list {
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #a20000;
+  font-weight: 400;
+  text-decoration: underline solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-shadow: -2px 2px 0 rgb(105, 105, 105), 2px 2px 0 rgb(105, 105, 105),
+    2px -2px 0 rgb(105, 105, 105), -2px -2px 0 rgb(105, 105, 105);
+}

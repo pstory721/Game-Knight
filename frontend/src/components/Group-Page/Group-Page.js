@@ -19,38 +19,40 @@ export function GroupPage() {
 
   let userCheck;
 
-  userGroup.every((ele) => ele.userId !== sessionUser.id)
+  userGroup.every((ele) => ele.userId !== sessionUser.id);
   if (sessionUser.id == group?.ownerId) {
     userCheck = <EditDelete id={group?.id} />;
   }
   let groupcheck;
-  if( !userGroup.some((ele) => ele.groupId === +id)){
-    groupcheck =<div>
-    <button
-      onClick={() => {
-        const payload = {
-          userId: sessionUser.id,
-          groupId: group.id,
-        };
-        dispatch(AddUserGroup(payload));
-      }}
-    >
-      Join
-    </button>
-  </div>
+  if (!userGroup.some((ele) => ele.groupId === +id)) {
+    groupcheck = (
+      <div>
+        <button
+          onClick={() => {
+            const payload = {
+              userId: sessionUser.id,
+              groupId: group.id,
+            };
+            dispatch(AddUserGroup(payload));
+          }}
+        >
+          Join
+        </button>
+      </div>
+    );
   }
 
   return (
     <main>
       <div className="secondDiv">
         <div>
-          <img src={`${group?.file}`} alt="Group Image Here"></img>
+          <img src={`${group?.file}`} alt="Group"></img>
         </div>
 
         <div>
           <div className="secondDiv">
-            <div>{`${group?.type}`}</div>
-            <div>{`${group?.description}`}</div>
+            <h1>{`${group?.type}`}</h1>
+            <h2>{`${group?.description}`}</h2>
           </div>
           {userCheck}
         </div>
@@ -58,7 +60,11 @@ export function GroupPage() {
           <ul>
             {groupEvents?.map((event) => (
               <div>
-                <Link to={`/event-page/${event.id}`} key={`${event.id}`}>
+                <Link
+                  className="list"
+                  to={`/event-page/${event.id}`}
+                  key={`${event.id}`}
+                >
                   {event.name}
                 </Link>
               </div>

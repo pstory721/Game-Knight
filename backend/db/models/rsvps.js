@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   rsvp.associate = function(models) {
     rsvp.belongsTo(models.User, { foreignKey: "userId" });
-
+    rsvp.belongsTo(models.event, { foreignKey: "eventId" });
   };
   return rsvp;
 };

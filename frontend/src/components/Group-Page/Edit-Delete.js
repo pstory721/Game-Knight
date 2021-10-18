@@ -1,12 +1,10 @@
 import { DeleteAGroup, PatchAGroup } from "../../store/group-page";
 import { useHistory, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useDispatch} from "react-redux";
+import { useState } from "react";
 
 export function EditDelete() {
   const { id } = useParams();
-  const sessionUser = useSelector((state) => state.session.user);
-  const EditGroups = useSelector((state) => state.SingleGroup.group1);
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
@@ -50,32 +48,33 @@ export function EditDelete() {
     if (description.length > 140) {
       errors.push("Description must be less than 140 characters");
     }
-    if (file.length >  255) {
+    if (file.length > 255) {
       errors.push("url must be less than 255 characters");
     }
-    setShowForm(false)
+    setShowForm(false);
     setErrors(errors);
     const payload = {
       type,
       description,
       file,
     };
-    let updatedGroup = await dispatch(PatchAGroup(payload, id));
+    await dispatch(PatchAGroup(payload, id));
   };
 
   return (
-    <div>
-      <button  onClick={() => setShowForm(true)} id="splashlinkbuttons">
-        Edit Group
+    <div className='ididit'>
+    <div className='idkwhattodo'>
+      <button onClick={() => setShowForm(true)} id="splashlinkbuttons">
+        Edit
       </button>
       {showForm && (
-        <div id="spacerDiv">
-          <form onSubmit={handleSubmit}>
+          <form className="secondDiv" onSubmit={handleSubmit}>
             <ul className="errors">
               {errors.map((error) => (
                 <li key={error}>{error}</li>
               ))}
             </ul>
+            <div className="col-75">
             <label>
               Name
               <input
@@ -85,6 +84,8 @@ export function EditDelete() {
                 onChange={(e) => setType(e.target.value)}
               />
             </label>
+            </div>
+            <div className="col-75">
             <label>
               Description
               <textarea
@@ -93,22 +94,23 @@ export function EditDelete() {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </label>
+            </div>
+            <div className="col-75">
             <label>
-            imgUrl
-          <input
-            type="text"
-            name="file"
-            value={file}
-            onChange={(e) => setFile(e.target.value)}
-          />
-        </label>
-
+              imgUrl
+              <input
+                type="text"
+                name="file"
+                value={file}
+                onChange={(e) => setFile(e.target.value)}
+              />
+            </label>
+            </div>
 
             <button type="submit" disabled={errors.length > 0}>
-              Update your Group
+              Update
             </button>
           </form>
-        </div>
       )}
       <button
         id="splashlinkbuttons"
@@ -117,8 +119,9 @@ export function EditDelete() {
           history.push("/home");
         }}
       >
-        Delete Group
+        Delete
       </button>
+    </div>
     </div>
   );
 }

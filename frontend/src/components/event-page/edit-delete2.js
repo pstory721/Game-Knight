@@ -66,10 +66,10 @@ export function EditDelete2() {
     if (capacity === "") {
       errors.push("Capicity field is required");
     }
-    if (file.length >  255) {
+    if (file.length > 255) {
       errors.push("url must be less than 255 characters");
     }
-    setShowForm(false)
+    setShowForm(false);
     setErrors(errors);
     const payload = {
       hostId: sessionUser.id,
@@ -78,100 +78,111 @@ export function EditDelete2() {
       name,
       date,
       capacity,
-      file
+      file,
     };
-    let updatedEvent = await dispatch(PatchAEvent(payload, id));
+    await dispatch(PatchAEvent(payload, id));
   };
 
   return (
-    <div className="secondDiv">
-       <button
-       onClick={() => setShowForm(true)} id="splashlinkbuttons">
-        Edit Event
+    <div  className='ididit'>
+    <div className="idkwhattodo">
+      <button onClick={() => setShowForm(true)} id="splashlinkbuttons">
+        Edit
       </button>
-      {showForm &&(
-      <form className="secondDiv" onSubmit={handleSubmit}>
-        <ul className="errors">
-          {errors.map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Venue
-          <select
-            name="venueId"
-            onChange={(e) => setVenueId(e.target.value)}
-            value={venueId}
-          >
-            <option value="" disabled>
-              Select a Venue
-            </option>
-            {venues?.map((venue) => (
-              <option value={venue.id} key={venue.id}>
-                {venue.name}
-              </option>
+      {showForm && (
+        <form className="secondDiv" onSubmit={handleSubmit}>
+          <ul className="errors">
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
             ))}
-          </select>
-        </label>
-        <label>
-          Group
-          <select
-            name="catagoryId"
-            onChange={(e) => setCatagory(e.target.value)}
-            value={catagoryId}
-          >
-            <option value="" disabled>
-              Select a Group
-            </option>
-            {groups?.map((group) => (
-              <option value={group.id} key={group.id}>
-                {group.type}
+          </ul>
+          <div className="col-75">
+          <label>
+            Venue
+            <select
+              name="venueId"
+              onChange={(e) => setVenueId(e.target.value)}
+              value={venueId}
+            >
+              <option value="" disabled>
+                Select a Venue
               </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          name
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          date
-          <input
-            type="date"
-            name="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </label>
-        <label>
-          Capacity
-          <input
-            type="number"
-            name="capacity"
-            value={capacity}
-            onChange={(e) => setCapacity(e.target.value)}
-          />
-        </label>
-        <label>
-          Image Url
-          <input
-            type="text"
-            name="file"
-            value={file}
-            onChange={(e) => setfile(e.target.value)}
-          />
-        </label>
+              {venues?.map((venue) => (
+                <option value={venue.id} key={venue.id}>
+                  {venue.name}
+                </option>
+              ))}
+            </select>
+          </label>
+            </div>
+            <div className="col-75">
+          <label>
+            Group
+            <select
+              name="catagoryId"
+              onChange={(e) => setCatagory(e.target.value)}
+              value={catagoryId}
+            >
+              <option value="" disabled>
+                Select a Group
+              </option>
+              {groups?.map((group) => (
+                <option value={group.id} key={group.id}>
+                  {group.type}
+                </option>
+              ))}
+            </select>
+          </label>
+          </div>
+          <div className="col-75">
+          <label>
+            name
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          </div>
+          <div className="col-75">
+          <label>
+            date
+            <input
+              type="date"
+              name="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </label>
+          </div>
+          <div className="col-75">
+          <label>
+            Capacity
+            <input
+              type="number"
+              name="capacity"
+              value={capacity}
+              onChange={(e) => setCapacity(e.target.value)}
+            />
+          </label>
+          </div>
+          <div className="col-75">
+          <label>
+            Image Url
+            <input
+              type="text"
+              name="file"
+              value={file}
+              onChange={(e) => setfile(e.target.value)}
+            />
+          </label>
+          </div>
 
-        <button
-        type="submit"  disabled={errors.length > 0}>
-          Update your Event!
-        </button>
-      </form>
+          <button type="submit" disabled={errors.length > 0}>
+            Update
+          </button>
+        </form>
       )}
       <button
         id="splashlinkbuttons"
@@ -180,8 +191,9 @@ export function EditDelete2() {
           history.push("/home");
         }}
       >
-        Delete Group
+        Delete
       </button>
+    </div>
     </div>
   );
 }

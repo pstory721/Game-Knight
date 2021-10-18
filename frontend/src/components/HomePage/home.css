@@ -82,6 +82,7 @@ font-variant: normal;
 text-transform: none;
 font-weight: 400;
 }
+
 .links{
 font-family: "Arial Black", Gadget, sans-serif;
 font-size: 15px;
@@ -93,7 +94,10 @@ text-decoration: underline solid rgb(68, 68, 68);
 font-style: normal;
 font-variant: normal;
 text-transform: none;
-text-shadow: -2px 2px 0 rgb(105, 105, 105), 2px 2px 0 rgb(105, 105, 105), 2px -2px 0 rgb(105, 105, 105), -2px -2px 0 rgb(105, 105, 105);
+text-shadow: -1px 1px 0 rgb(105, 105, 105), 1px 1px 0 rgb(105, 105, 105), 1px -1px 0 rgb(105, 105, 105), -1px -1px 0 rgb(105, 105, 105);
+}
+.links:hover{
+background-color: rgb(105, 105, 105);
 }
 
 .middle{

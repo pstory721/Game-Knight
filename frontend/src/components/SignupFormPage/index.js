@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css';
+import "./SignupForm.css";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -19,20 +19,28 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      return dispatch(
+        sessionActions.signup({ email, username, password })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className='ididit'>
+      <div className='idkwhattodo'>
+      <form onSubmit={handleSubmit}>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
       </ul>
+      <div className='col-75'>
       <label>
         Email
         <input
@@ -42,6 +50,8 @@ function SignupFormPage() {
           required
         />
       </label>
+      </div>
+      <div className='col-75'>
       <label>
         Username
         <input
@@ -51,6 +61,8 @@ function SignupFormPage() {
           required
         />
       </label>
+      </div>
+      <div className='col-75'>
       <label>
         Password
         <input
@@ -60,6 +72,8 @@ function SignupFormPage() {
           required
         />
       </label>
+      </div>
+      <div className='col-75'>
       <label>
         Confirm Password
         <input
@@ -69,8 +83,11 @@ function SignupFormPage() {
           required
         />
       </label>
+      </div>
       <button type="submit">Sign Up</button>
     </form>
+    </div>
+    </div>
   );
 }
 
